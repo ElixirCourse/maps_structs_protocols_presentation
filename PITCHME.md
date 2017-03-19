@@ -216,6 +216,10 @@ data = %{
 iex> put_in(
   data, [:proboscidea, :elephantidae, :fictional], ["Jumbo"]
 )
+```
+
+#HSLIDE
+```elixir
 %{
   proboscidea: %{
     elephantidae: %{
