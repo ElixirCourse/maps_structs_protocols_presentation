@@ -93,7 +93,9 @@ iex> pesho."age"
 ```elixir
 iex> Map.pop(pesho, :name)
 {"Пешо", %{
-    age: 35, hobbies: {:drink, :smoke, :xxx, :eurofootball}, job: "шлосер"
+    age: 35,
+    hobbies: {:drink, :smoke, :xxx, :eurofootball},
+    job: "шлосер"
   }
 }
 iex> Map.pop(pesho, :full_name, "Петър Панов")
@@ -105,9 +107,18 @@ iex> Map.pop_lazy(pesho, :nick, fn -> "PI4A" end)
 #HSLIDE
 ```elixir
 iex> Map.delete(pesho, :name)
-%{age: 35, hobbies: {:drink, :smoke, :xxx, :eurofootball}, job: "шлосер"}
+%{
+  age: 35,
+  hobbies: {:drink, :smoke, :xxx, :eurofootball},
+  job: "шлосер"
+}
 iex> Map.delete(pesho, :full_name)
-%{age: 35, hobbies: {:drink, :smoke, :xxx, :eurofootball}, job: "шлосер", name: "Пешо"}
+%{
+  age: 35,
+  hobbies: {:drink, :smoke, :xxx, :eurofootball},
+  job: "шлосер",
+  name: "Пешо"
+}
 ```
 
 #HSLIDE
@@ -145,7 +156,9 @@ iex> Map.merge(pesho, %{hobbies: :just_drinking, dring: :rakia})
 
 #HSLIDE
 ```elixir
-iex> pesho = %{age: 35, dring: :rakia, hobbies: :just_drinking, name: "Пешо"}
+iex> pesho = %{
+  age: 35, dring: :rakia, hobbies: :just_drinking, name: "Пешо"
+}
 %{age: 35, dring: :rakia, hobbies: :just_drinking, name: "Пешо"}
 
 iex> %{name: x} = pesho
@@ -184,8 +197,15 @@ iex> A.f(pesho)
 data = %{
   proboscidea: %{
     elephantidae: %{
-      elephas: ["Asian Elephant", "Indian Elephant", "Sri Lankan Elephant"],
-      loxodonta: ["African bush elephant", "African forest elephant"]
+      elephas: [
+        "Asian Elephant",
+        "Indian Elephant",
+        "Sri Lankan Elephant"
+      ],
+      loxodonta: [
+        "African bush elephant",
+        "African forest elephant"
+      ]
     },
     mammutidae: %{
       mammut: ["Mastodon"]
@@ -196,13 +216,21 @@ data = %{
 
 #HSLIDE
 ```elixir
-iex> put_in(data, [:proboscidea, :elephantidae, :fictional], ["Jumbo"])
+iex> put_in(
+  data, [:proboscidea, :elephantidae, :fictional], ["Jumbo"]
+)
 %{
   proboscidea: %{
     elephantidae: %{
-      elephas: ["Asian Elephant", "Indian Elephant", "Sri Lankan Elephant"],
+      elephas: [
+        "Asian Elephant",
+        "Indian Elephant",
+        "Sri Lankan Elephant"
+      ],
       fictional: ["Jumbo"],
-      loxodonta: ["African bush elephant", "African forest elephant"]
+      loxodonta: [
+        "African bush elephant", "African forest elephant"
+      ]
     },
     mammutidae: %{ mammut: ["Mastodon"] }
   }
@@ -242,13 +270,20 @@ end
 
 ```elixir
 iex> pesho = %Person{name: "Пешо", age: 35, location: "Горен Чвор"}
-%Person{age: 35, chldren: [], location: "Горен Чвор", name: "Пешо"}
+%Person{
+  age: 35, chldren: [], location: "Горен Чвор", name: "Пешо"
+}
 ```
 
 #HSLIDE
 ```elixir
 iex> inspect pesho, structs: false
-"%{__struct__: Person, age: 35, chldren: [], location: \"Горен Чвор\", name: \"Пешо\"}"
+"%{
+  __struct__: Person,
+  age: 35,
+  chldren: [],
+  location: \"Горен Чвор\", name: \"Пешо\"
+}"
 ```
 
 #HSLIDE
@@ -256,7 +291,9 @@ iex> inspect pesho, structs: false
 
 ```elixir
 iex> Map.put(pesho, :name, "Стойчо")
-%Person{age: 35, chldren: [], location: "Горен Чвор", name: "Стойчо"}
+%Person{
+  age: 35, chldren: [], location: "Горен Чвор", name: "Стойчо"
+}
 ```
 
 #HSLIDE
@@ -264,7 +301,9 @@ iex> Map.put(pesho, :name, "Стойчо")
 
 ```elixir
 iex> %{pesho | name: "Стойчо"}
-%Person{age: 35, chldren: [], location: "Горен Чвор", name: "Стойчо"}
+%Person{
+  age: 35, chldren: [], location: "Горен Чвор", name: "Стойчо"
+}
 ```
 
 #HSLIDE
@@ -285,12 +324,16 @@ iex> map_size(%{"ключ" => "стойност"})
 
 ```elixir
 iex> %{name: x} = pesho
-%Person{age: 35, chldren: [], location: "Горен Чвор", name: "Пешо"}
+%Person{
+  age: 35, chldren: [], location: "Горен Чвор", name: "Пешо"
+}
 iex> x
 "Пешо"
 
 iex> %Person{name: x} = pesho
-%Person{age: 35, chldren: [], location: "Горен Чвор", name: "Пешо"}
+%Person{
+  age: 35, chldren: [], location: "Горен Чвор", name: "Пешо"
+}
 iex> x
 "Пешо"
 
@@ -371,9 +414,7 @@ iex> JSON.encode(false)
 iex> JSON.encode(nil)
 "null"
 iex> JSON.encode(:name)
-** (Protocol.UndefinedError) protocol JSON not implemented for "name"
-    json_protocol.ex:1: JSON.impl_for!/1
-    json_protocol.ex:3: JSON.encode/1
+** (Protocol.UndefinedError)
 ```
 
 #HSLIDE
@@ -426,9 +467,7 @@ iex> JSON.encode("")
 iex> JSON.encode("some")
 "\"some\""
 iex> JSON.encode(<< 200, 201 >>)
-** (Protocol.UndefinedError) protocol JSON not implemented for [200, 201]
-    json_protocol.ex:1: JSON.impl_for!/1
-    json_protocol.ex:3: JSON.encode/1
+** (Protocol.UndefinedError)
 ```
 
 #HSLIDE
@@ -445,11 +484,7 @@ end
 iex> JSON.encode([nil, true, false])
 "[null, true, false]"
 iex> JSON.encode(<< 200, 201 >>)
-** (Protocol.UndefinedError) protocol JSON not implemented for 200
-             json_protocol.ex:1: JSON.impl_for!/1
-             json_protocol.ex:3: JSON.encode/1
-    (elixir) lib/enum.ex:1229: Enum."-map/2-lists^map/1-0-"/2
-             json_protocol.ex:44: JSON.List.encode/1
+** (Protocol.UndefinedError)
 ```
 
 #HSLIDE
@@ -530,6 +565,8 @@ JSON.encode(kosta)
 * `Float`
 * `Function`
 * `Integer`
+
+#HSLIDE
 * `List`
 * `Map`
 * `PID`
@@ -600,8 +637,11 @@ iex> Protocol.extract_protocols([path])
 #HSLIDE
 ```elixir
 iex>Protocol.extract_impls(Enumerable, [path])
-[Stream, List, Function, Map, IO.Stream, Range, MapSet, HashDict, HashSet,
- GenEvent.Stream, File.Stream]
+[
+  Stream, List, Function, Map,
+  IO.Stream, Range, MapSet, HashDict, HashSet,
+  GenEvent.Stream, File.Stream
+]
 ```
 
 #HSLIDE
