@@ -198,8 +198,7 @@ data = %{
   proboscidea: %{
     elephantidae: %{
       elephas: [
-        "Asian Elephant",
-        "Indian Elephant",
+        "Asian Elephant", "Indian Elephant",
         "Sri Lankan Elephant"
       ],
       loxodonta: [
@@ -207,9 +206,7 @@ data = %{
         "African forest elephant"
       ]
     },
-    mammutidae: %{
-      mammut: ["Mastodon"]
-    }
+    mammutidae: %{ mammut: ["Mastodon"] }
   }
 }
 ```
@@ -223,8 +220,7 @@ iex> put_in(
   proboscidea: %{
     elephantidae: %{
       elephas: [
-        "Asian Elephant",
-        "Indian Elephant",
+        "Asian Elephant", "Indian Elephant",
         "Sri Lankan Elephant"
       ],
       fictional: ["Jumbo"],
@@ -235,8 +231,10 @@ iex> put_in(
     mammutidae: %{ mammut: ["Mastodon"] }
   }
 }
+```
 
-# Същият резултат, ако ключът 'fictional' съществуваше:
+#HSLIDE
+```elixir
 iex> put_in(data.proboscidea.elephantidae.fictional, ["Jumbo"])
 ```
 
@@ -269,7 +267,9 @@ end
 * Създаваме инстанция на структурата, подобно на какво създаваме `map`-ове:
 
 ```elixir
-iex> pesho = %Person{name: "Пешо", age: 35, location: "Горен Чвор"}
+iex> pesho = %Person{
+  name: "Пешо", age: 35, location: "Горен Чвор"
+}
 %Person{
   age: 35, chldren: [], location: "Горен Чвор", name: "Пешо"
 }
@@ -329,7 +329,10 @@ iex> %{name: x} = pesho
 }
 iex> x
 "Пешо"
+```
 
+#HSLIDE
+```elixir
 iex> %Person{name: x} = pesho
 %Person{
   age: 35, chldren: [], location: "Горен Чвор", name: "Пешо"
